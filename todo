@@ -1,0 +1,17 @@
+check all vs code extensions work 
+
+components: 
+
+App	
+Header
+	ModeToggle
+	TopicChoice
+WelcomeScreen
+	WelcomeMessage
+	TopicSelectionContainer
+		TopicSelectionCard
+QuizContainer
+	QuestionContainer
+		QuizProgress
+	AnswerContainer
+
