@@ -1,17 +1,3 @@
-check all vs code extensions work 
-
-components: 
-
-App	
-Header
-	ModeToggle
-	TopicChoice
-WelcomeScreen
-	WelcomeMessage
-	TopicSelectionContainer
-		TopicSelectionCard
-QuizContainer
-	QuestionContainer
-		QuizProgress
-	AnswerContainer
-
+Set up basic app with bare minimum CSS but all functionality working correctly
+Make sure all of the elements are using correct, semantic HTML 
+CSS stuff 
