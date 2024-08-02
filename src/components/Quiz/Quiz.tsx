@@ -1,5 +1,30 @@
 import "./quiz.css";
 
+type QuizProps = {
+  isGameEnded: boolean;
+  quizTopicSelected: {
+    title: string;
+    icon: string;
+    questions: {
+      question: string;
+      options: string[];
+      answer: string;
+    }[];
+  } | null;
+  totalQuestions: number | undefined;
+  questionPosition: number;
+  currentQuestion: string | undefined;
+  chosenAnswer: string | null;
+  correctAnswer: string | undefined;
+  errorMessage: boolean;
+  options: string[] | undefined;
+  updateQuestion: () => null;
+  updateChosenAnswer: (choice: string) => void;
+  handleSubmit: () => void;
+  hideSubmit: boolean;
+  handleEnd: () => void;
+};
+
 const Quiz = ({
   isGameEnded,
   quizTopicSelected,
@@ -15,7 +40,7 @@ const Quiz = ({
   handleSubmit,
   hideSubmit,
   handleEnd,
-}) => {
+}: QuizProps) => {
   // Display all the available options to answer with
   const answerOptions = options?.map((option: string, optionID: number) => {
     return (

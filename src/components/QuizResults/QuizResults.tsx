@@ -1,4 +1,14 @@
-const QuizResults = ({ isGameEnded, score, totalQuestions }) => {
+type QuizResultsProps = {
+  isGameEnded: boolean;
+  score: number;
+  totalQuestions: number | undefined;
+};
+
+const QuizResults = ({
+  isGameEnded,
+  score,
+  totalQuestions,
+}: QuizResultsProps) => {
   {
     return isGameEnded ? (
       <>
