@@ -1,0 +1,11 @@
+.answer--selected {
+  background-color: aqua;
+}
+
+.answer--correct {
+  background-color: green;
+}
+
+.answer--incorrect {
+  background-color: red;
+}

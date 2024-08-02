@@ -1,3 +1,7 @@
-Set up basic app with bare minimum CSS but all functionality working correctly
-Make sure all of the elements are using correct, semantic HTML 
-CSS stuff 
+Make sure all of the elements are using correct, semantic HTML
+No typescript errors 
+ 
+CSS stuff
+light mode dark mode toggle that persist on browser refresh localstorage 
+build 
+deploy to github pages  

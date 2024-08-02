@@ -6,9 +6,6 @@ import QuizResults from "./components/QuizResults/QuizResults";
 import "./App.css";
 import data from "../data.json";
 
-// hide next question button until user selects an option, then submits it DONE
-// Prevent user from selecting new answer after clicking submit
-
 function App() {
   type Topic = {
     title: string;
@@ -20,37 +17,26 @@ function App() {
     }[];
   };
 
-  // No quiz topic selected by default
-  const [quizTopic, setQuizTopic] = useState<Topic | null>(null);
+  const [quizTopic, setQuizTopic] = useState<Topic | null>(null); // No quiz selected at start
+  const [question, setQuestion] = useState<number>(0); // Start at the first question
+  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null); // No chosen answer at start
+  const [score, setScore] = useState<number>(0); // Start users score at zero
+  const [gameEnded, setGameEnded] = useState<boolean>(false); // Show quiz results when game ends
+  const [errorMessage, setErrorMessage] = useState<boolean>(false); // Must pick answer for each question
+  const [hideSubmit, setHideSubmit] = useState<boolean>(false); // Show or hide submit/next question buttons
 
-  // Start at the first question
-  const [question, setQuestion] = useState<number>(0);
+  const topicChoices = data.quizzes; // All topics
+  const totalQuestions = quizTopic?.questions.length; // Total questions for selected topic
+  const currentQuestion = quizTopic?.questions[question].question; // Currently displayed question
+  const answer = quizTopic?.questions[question].answer; // The correct answer
+  const options = quizTopic?.questions[question].options; // The available options to answer with
 
-  const [chosenAnswer, setChosenAnswer] = useState<string | null>(null);
-
-  // Start user score at zero
-  const [score, setScore] = useState<number>(0);
-
-  // Check when game is over
-  const [gameEnded, setGameEnded] = useState<boolean>(false);
-
-  // Error message when no selection is made
-  const [errorMessage, setErrorMessage] = useState<boolean>(false);
-
-  const [hideSubmit, setHideSubmit] = useState<boolean>(false);
-
-  const topicChoices = data.quizzes;
-  const totalQuestions = quizTopic?.questions.length;
-  const currentQuestion = quizTopic?.questions[question].question;
-  const answer = quizTopic?.questions[question].answer;
-  const options = quizTopic?.questions[question].options;
-
-  // Update the topic
+  // Sets to chosen topic
   const updateTopic = (chosenTopic: number) => {
     return setQuizTopic(data.quizzes[chosenTopic]);
   };
 
-  // Go to next question
+  // Loops through questions from start to finish
   const updateQuestion = () => {
     if (question + 1 !== totalQuestions && hideSubmit) {
       setQuestion(question + 1);
@@ -60,7 +46,7 @@ function App() {
     return null;
   };
 
-  // Update chosen answer
+  // Stores the users selection for answer
   const updateChosenAnswer = (choice: string) => {
     if (!hideSubmit) {
       setErrorMessage(false);
@@ -68,7 +54,7 @@ function App() {
     }
   };
 
-  // Handle Submit Button
+  // Updates score, hides submit button and shows next button
   const handleSubmit = () => {
     updateScore();
     if (chosenAnswer === null) {
@@ -78,19 +64,17 @@ function App() {
     }
   };
 
-  // Update score
+  // Updates score if user selects correct answer
   const updateScore = () => {
     if (chosenAnswer !== null && chosenAnswer === answer) {
       setScore(score + 1);
     }
   };
 
-  // End quiz
+  // Shows the quiz results page when the quiz is over
   const handleEnd = () => {
     setGameEnded(true);
   };
-
-  console.log(answer);
 
   return (
     <>
@@ -107,6 +91,7 @@ function App() {
         questionPosition={question}
         currentQuestion={currentQuestion}
         chosenAnswer={chosenAnswer}
+        correctAnswer={answer}
         errorMessage={errorMessage}
         options={options}
         updateQuestion={updateQuestion}

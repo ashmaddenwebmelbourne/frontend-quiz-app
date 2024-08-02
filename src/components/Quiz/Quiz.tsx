@@ -1,3 +1,5 @@
+import "./quiz.css";
+
 const Quiz = ({
   isGameEnded,
   quizTopicSelected,
@@ -5,6 +7,7 @@ const Quiz = ({
   questionPosition,
   currentQuestion,
   chosenAnswer,
+  correctAnswer,
   errorMessage,
   options,
   updateQuestion,
@@ -16,9 +19,21 @@ const Quiz = ({
   // Display all the available options to answer with
   const answerOptions = options?.map((option: string, optionID: number) => {
     return (
-      <div onClick={() => updateChosenAnswer(option)} key={optionID}>
-        <div>{["A", "B", "C", "D"][optionID]}</div>
-        <p>{option}</p>
+      <div
+        className={`answer ${
+          chosenAnswer === option ? "answer--selected" : ""
+        } ${option === correctAnswer && hideSubmit ? "answer--correct" : ""} ${
+          chosenAnswer !== correctAnswer &&
+          hideSubmit &&
+          chosenAnswer === option
+            ? "answer--incorrect"
+            : ""
+        } answer--mode`}
+        onClick={() => updateChosenAnswer(option)}
+        key={optionID}
+      >
+        <div className="answer__order">{["A", "B", "C", "D"][optionID]}</div>
+        <p className="answer__text">{option}</p>
       </div>
     );
   });
