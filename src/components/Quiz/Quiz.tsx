@@ -1,3 +1,4 @@
+import errorIcon from "../../assets/images/icon-error.svg";
 import "./quiz.css";
 
 type QuizProps = {
@@ -45,7 +46,7 @@ const Quiz = ({
   const answerOptions = options?.map((option: string, optionID: number) => {
     return (
       <div
-        className={`answer ${
+        className={`answer shadow ${
           chosenAnswer === option ? "answer--selected" : ""
         } ${option === correctAnswer && hideSubmit ? "answer--correct" : ""} ${
           chosenAnswer !== correctAnswer &&
@@ -57,8 +58,10 @@ const Quiz = ({
         onClick={() => updateChosenAnswer(option)}
         key={optionID}
       >
-        <div className="answer__order">{["A", "B", "C", "D"][optionID]}</div>
-        <p className="answer__text">{option}</p>
+        <div className="answer__order heading--s">
+          {["A", "B", "C", "D"][optionID]}
+        </div>
+        <p className="answer__text heading--s">{option}</p>
       </div>
     );
   });
@@ -66,28 +69,47 @@ const Quiz = ({
   // Only begin quiz if topic is selected
   {
     return quizTopicSelected === null || isGameEnded ? null : (
-      <>
-        <div>
-          <p>{`Question ${questionPosition + 1} of ${totalQuestions}`}</p>
-          <h1>{currentQuestion}</h1>
+      <section className="quiz">
+        <div className="quiz__questions">
+          <em className="question--position body--s">{`Question ${
+            questionPosition + 1
+          } of ${totalQuestions}`}</em>
+          <h1 className="question heading--m">{currentQuestion}</h1>
+          <input
+            className="range"
+            type="range"
+            value={questionPosition}
+            max={totalQuestions}
+          />
         </div>
-        <div>
-          {answerOptions}
+        <div className="quiz__answers">
+          <div className="answers">{answerOptions}</div>
           {hideSubmit ? null : (
-            <button onClick={handleSubmit}>Submit Question</button>
+            <button className="btn heading--s" onClick={handleSubmit}>
+              Submit Question
+            </button>
           )}
           {chosenAnswer &&
           hideSubmit &&
           questionPosition + 1 !== totalQuestions ? (
-            <button onClick={updateQuestion}>Next Question</button>
+            <button className="btn heading--s" onClick={updateQuestion}>
+              Next Question
+            </button>
           ) : null}
 
           {questionPosition + 1 === totalQuestions && hideSubmit ? (
-            <button onClick={handleEnd}>End Quiz</button>
+            <button className="btn heading--s" onClick={handleEnd}>
+              End Quiz
+            </button>
           ) : null}
-          {errorMessage ? <em>Please choosen an answer</em> : null}
+          {errorMessage ? (
+            <div className="error--message">
+              <img src={errorIcon} aria-hidden="true" />
+              <p className="body--m">Please select an answer</p>
+            </div>
+          ) : null}
         </div>
-      </>
+      </section>
     );
   }
 };

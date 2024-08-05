@@ -79,32 +79,35 @@ function App() {
   return (
     <>
       <Header quizTopicSelected={quizTopic} />
-      <WelcomeScreen
-        quizTopicSelected={quizTopic}
-        topicChoices={topicChoices}
-        updateTopic={updateTopic}
-      />
-      <Quiz
-        isGameEnded={gameEnded}
-        quizTopicSelected={quizTopic}
-        totalQuestions={totalQuestions}
-        questionPosition={question}
-        currentQuestion={currentQuestion}
-        chosenAnswer={chosenAnswer}
-        correctAnswer={answer}
-        errorMessage={errorMessage}
-        options={options}
-        updateQuestion={updateQuestion}
-        updateChosenAnswer={updateChosenAnswer}
-        handleSubmit={handleSubmit}
-        hideSubmit={hideSubmit}
-        handleEnd={handleEnd}
-      />
-      <QuizResults
-        isGameEnded={gameEnded}
-        score={score}
-        totalQuestions={totalQuestions}
-      />
+      <main>
+        <WelcomeScreen
+          quizTopicSelected={quizTopic}
+          topicChoices={topicChoices}
+          updateTopic={updateTopic}
+        />
+        <Quiz
+          isGameEnded={gameEnded}
+          quizTopicSelected={quizTopic}
+          totalQuestions={totalQuestions}
+          questionPosition={question}
+          currentQuestion={currentQuestion}
+          chosenAnswer={chosenAnswer}
+          correctAnswer={answer}
+          errorMessage={errorMessage}
+          options={options}
+          updateQuestion={updateQuestion}
+          updateChosenAnswer={updateChosenAnswer}
+          handleSubmit={handleSubmit}
+          hideSubmit={hideSubmit}
+          handleEnd={handleEnd}
+        />
+        <QuizResults
+          quizTopicSelected={quizTopic}
+          isGameEnded={gameEnded}
+          score={score}
+          totalQuestions={totalQuestions}
+        />
+      </main>
     </>
   );
 }

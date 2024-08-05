@@ -1,7 +1,7 @@
-Make sure all of the elements are using correct, semantic HTML
-No typescript errors 
- 
-CSS stuff
-light mode dark mode toggle that persist on browser refresh localstorage 
-build 
+CSS stuff (BEM, CSS variables) spacing, sizing, everything but colors:
+Give all CSS class names first, then do the stlying for mobile and expand up 
+
+
+  
+light mode dark mode toggle that persists on browser refresh localstorage
 deploy to github pages  

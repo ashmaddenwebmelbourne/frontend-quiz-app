@@ -1,5 +1,6 @@
+import "./welcomescreen.css";
+
 type WelcomeScreenProps = {
-  // The quiz object or no selection
   quizTopicSelected: {
     title: string;
     icon: string;
@@ -9,7 +10,6 @@ type WelcomeScreenProps = {
       answer: string;
     }[];
   } | null;
-  // The array of topic objects
   topicChoices: {
     title: string;
     icon: string;
@@ -29,15 +29,34 @@ const WelcomeScreen = ({
 }: WelcomeScreenProps) => {
   const topicChoice = topicChoices.map((topic, topicID) => {
     return (
-      <div key={topicID} onClick={() => updateTopic(topicID)}>
-        <img src={topic.icon} alt={`${topic.title} logo`} />
-        <p>{topic.title}</p>
+      <div
+        className="topic__card shadow"
+        key={topicID}
+        onClick={() => updateTopic(topicID)}
+      >
+        <div className={`topic__img topic__img--${topic.title}`}>
+          <img src={topic.icon} aria-hidden="true" />
+        </div>
+        <p className="topic__title heading--s">{topic.title}</p>
       </div>
     );
   });
 
   {
-    return quizTopicSelected === null ? <>{topicChoice}</> : null;
+    return quizTopicSelected === null ? (
+      <section className="welcome">
+        <div className="welcome__message">
+          <h1 className="welcome__title heading--lg">
+            Welcome to the{" "}
+            <span className="heading--lg--bold">Frontend Quiz!</span>
+          </h1>
+          <em className="welcome__helper body--s">
+            Pick a subject to get started
+          </em>
+        </div>
+        <div className="topics">{topicChoice}</div>
+      </section>
+    ) : null;
   }
 };
 
