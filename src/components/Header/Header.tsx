@@ -15,12 +15,16 @@ type HeaderProps = {
 };
 
 const Header = ({ quizTopicSelected }: HeaderProps) => {
+  const handleMode = () => {
+    document.body.classList.toggle("dark-mode");
+  };
+
   return (
     <header className="header">
       {quizTopicSelected === null ? null : (
         <div className="topic">
           <img
-            className="topic__img"
+            className={`${quizTopicSelected.title} topic__img`}
             src={quizTopicSelected.icon}
             aria-hidden="true"
           />
@@ -31,7 +35,7 @@ const Header = ({ quizTopicSelected }: HeaderProps) => {
         <img className="light-icon" src={lightModeIcon} aria-hidden="true" />
         <div className="switch">
           <label>
-            <input type="checkbox" />
+            <input onClick={handleMode} id="toggleMode" type="checkbox" />
             <span className="slider slider--round"></span>
           </label>
         </div>

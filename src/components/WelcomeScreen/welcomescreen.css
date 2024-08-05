@@ -8,6 +8,10 @@
   margin-bottom: 2.5rem;
 }
 
+.welcome__title {
+  color: var(--navy-blue);
+}
+
 .welcome__message,
 .topics {
   width: 100%;
@@ -26,16 +30,13 @@
   align-items: center;
   cursor: pointer;
   border-radius: 0.75rem;
+  background-color: var(--white);
 }
 
-.topic__img--html {
+.topic__title {
+  color: var(--navy-blue);
 }
 
-.topic__img--css {
-}
-
-.topic__img--javascript {
-}
-
-.topic__img--accessibility {
+.welcome__helper {
+  color: var(--grey);
 }

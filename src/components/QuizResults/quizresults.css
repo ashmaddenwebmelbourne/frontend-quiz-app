@@ -1,4 +1,6 @@
-.results--title {
+.results__title,
+.results__topic__title {
+  color: var(--navy-blue);
 }
 
 .results {
@@ -9,9 +11,18 @@
   padding: 2rem;
   border-radius: 0.75rem;
   margin-bottom: 1rem;
+  background-color: var(--white);
 }
 
 .results__topic {
   display: flex;
   gap: 1rem;
+}
+
+.score {
+  color: var(--navy-blue);
+}
+
+.score__total {
+  color: var(--grey);
 }

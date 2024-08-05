@@ -34,7 +34,7 @@ const WelcomeScreen = ({
         key={topicID}
         onClick={() => updateTopic(topicID)}
       >
-        <div className={`topic__img topic__img--${topic.title}`}>
+        <div className={`topic__img ${topic.title}`}>
           <img src={topic.icon} aria-hidden="true" />
         </div>
         <p className="topic__title heading--s">{topic.title}</p>

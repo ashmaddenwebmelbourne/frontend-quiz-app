@@ -1,4 +1,5 @@
 import errorIcon from "../../assets/images/icon-error.svg";
+import successIcon from "../../assets/images/icon-correct.svg";
 import "./quiz.css";
 
 type QuizProps = {
@@ -46,9 +47,13 @@ const Quiz = ({
   const answerOptions = options?.map((option: string, optionID: number) => {
     return (
       <div
-        className={`answer shadow ${
+        className={`answer shadow ${!hideSubmit ? "answer-hover" : ""} ${
           chosenAnswer === option ? "answer--selected" : ""
         } ${option === correctAnswer && hideSubmit ? "answer--correct" : ""} ${
+          option === correctAnswer && hideSubmit && chosenAnswer === option
+            ? "answer--picked--correct"
+            : ""
+        } ${
           chosenAnswer !== correctAnswer &&
           hideSubmit &&
           chosenAnswer === option
@@ -62,6 +67,16 @@ const Quiz = ({
           {["A", "B", "C", "D"][optionID]}
         </div>
         <p className="answer__text heading--s">{option}</p>
+        <img
+          className="answer__correct-img"
+          src={successIcon}
+          alt={`The correct answer is ${option}`}
+        />
+        <img
+          className="answer__incorrect-img"
+          src={errorIcon}
+          alt="This option is incorrect"
+        />
       </div>
     );
   });

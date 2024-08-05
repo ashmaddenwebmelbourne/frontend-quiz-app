@@ -24,17 +24,23 @@ const QuizResults = ({
   {
     return isGameEnded ? (
       <section>
-        <h1 className="heading--lg">
+        <h1 className="heading--lg results__title">
           Quiz completed{" "}
           <span className="heading--lg--bold"> You scored...</span>
         </h1>
         <div className="results shadow">
           <div className="results__topic">
-            <img src={quizTopicSelected?.icon} aria-hidden="true" />
-            <p>{quizTopicSelected?.title}</p>
+            <img
+              className={`${quizTopicSelected?.title}`}
+              src={quizTopicSelected?.icon}
+              aria-hidden="true"
+            />
+            <p className="heading--s results__topic__title">
+              {quizTopicSelected?.title}
+            </p>
           </div>
-          <strong className="display">{`${score}`}</strong>
-          <p className="body--m">{`out of ${totalQuestions}`}</p>
+          <strong className="display score">{`${score}`}</strong>
+          <p className="score__total body--m">{`out of ${totalQuestions}`}</p>
         </div>
         <div className="btn--end heading--s">
           <a href="/">Restart quiz</a>
