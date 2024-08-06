@@ -1,7 +1,7 @@
-CSS stuff (BEM, CSS variables) spacing, sizing, everything but colors:
-Give all CSS class names first, then do the stlying for mobile and expand up 
-
-
-  
-light mode dark mode toggle that persists on browser refresh localstorage
+range slider
+icons in header to change to white 
+hovering over answer in dark mode makes answer option letter purple 
+fix up some spacing inconsistencies 
+clean up all CSS sheets massively 
+add comments    
 deploy to github pages  

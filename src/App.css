@@ -1,6 +1,7 @@
 /* Global Styles */
 
 /* Color Variables */
+
 :root {
   --purple: #a729f5;
   --navy-blue: #313e51;
@@ -19,11 +20,13 @@
   --btn-hover: #d394fa;
 
   /* Background image variables */
+
   --bg-desktop: url("./assets/images/pattern-background-desktop-light.svg");
   --bg-tablet: url("./assets/images/pattern-background-tablet-light.svg");
   --bg-mobile: url("./assets/images/pattern-background-mobile-light.svg");
 
   /* Box shadow */
+
   --box-shadow: 0px 16px 40px rgba(143, 160, 193, 0.14);
 }
 
@@ -35,6 +38,7 @@
   --app-bg: #313e51;
 
   /* Dark mode background images */
+
   --bg-desktop: url("./assets/images/pattern-background-desktop-dark.svg");
   --bg-tablet: url("./assets/images/pattern-background-tablet-dark.svg");
   --bg-mobile: url("./assets/images/pattern-background-mobile-dark.svg");
@@ -55,58 +59,65 @@
   font-style: italic;
 }
 
-.display {
+.display,
+.heading--lg--bold,
+.heading--lg,
+.heading--m,
+.heading--s,
+.body--m {
   font-family: "Rubik", sans-serif;
+}
+
+.display,
+.heading--lg--bold,
+.heading--m,
+.heading--s {
+  font-weight: 500;
+}
+
+.display,
+.heading--lg--bold,
+.heading--lg,
+.heading--m,
+.heading--s {
+  line-height: 100%;
+}
+
+.display {
   font-size: 2.5rem;
   font-size: clamp(2.5rem, 1.2rem + 6.5vw, 9rem);
-  font-weight: 500;
-  line-height: 100%;
 }
 
-.heading--lg--bold {
-  font-family: "Rubik", sans-serif;
-  font-size: 2rem;
-  font-size: clamp(2rem, 1.6rem + 2vw, 4rem);
-  font-weight: 500;
-  line-height: 100%;
-}
-
+.heading--lg--bold,
 .heading--lg {
-  font-family: "Rubik", sans-serif;
   font-size: 2rem;
   font-size: clamp(2rem, 1.6rem + 2vw, 4rem);
+}
+
+.heading--lg,
+.body--m,
+.body--s {
   font-weight: 400;
-  line-height: 100%;
 }
 
 .heading--m {
-  font-family: "Rubik", sans-serif;
   font-size: 1.75rem;
   font-size: clamp(1.75rem, 1.65rem + 0.5vw, 2.25rem);
-  font-weight: 500;
-  line-height: 100%;
 }
 
 .heading--s {
-  font-family: "Rubik", sans-serif;
   font-size: 1.125rem;
   font-size: clamp(1.125rem, 1rem + 0.625vw, 1.75rem);
-  font-weight: 500;
-  line-height: 100%;
 }
 
-.body--m {
-  font-family: "Rubik", sans-serif;
+.body--m,
+.body--s {
   font-size: 1rem;
-  font-weight: 400;
   line-height: 150%;
 }
 
 .body--s {
   font-family: "Rubik Italic";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 150%;
 }
 
 /* Container */
@@ -151,8 +162,8 @@ main {
 }
 
 /* Button Styles */
-.btn,
-.btn--end {
+
+.btn {
   background-color: var(--purple);
   color: #ffffff;
   width: 100%;
@@ -163,26 +174,19 @@ main {
   cursor: pointer;
 }
 
-.btn:hover,
-.btn--end:hover {
+.btn:hover {
   background-color: var(--btn-hover);
 }
 
-.btn--end {
-  width: auto;
-}
+/* Drop Shadow */
 
-.btn--end > a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-/* Drop Shadows */
 .shadow {
   box-shadow: var(--box-shadow);
 }
 
 /* Media Queries */
+
+/* Tablet */
 
 @media only screen and (min-width: 768px) {
   body {
@@ -204,6 +208,8 @@ main {
   }
 }
 
+/* Desktop */
+
 @media only screen and (min-width: 1162px) {
   .container {
     margin: 0 auto;
@@ -215,6 +221,9 @@ main {
   }
   .welcome {
     flex-direction: row;
+  }
+  .welcome,
+  .quiz {
     gap: 8rem;
   }
   .welcome__title {
@@ -222,18 +231,12 @@ main {
   }
   .quiz {
     display: flex;
-    gap: 8rem;
   }
-  .quiz__questions {
-    width: 100%;
-  }
+  .quiz__questions,
   .quiz__answers {
     width: 100%;
   }
   .header {
     height: 7.5rem;
-  }
-  main {
-    margin-top: 4rem;
   }
 }

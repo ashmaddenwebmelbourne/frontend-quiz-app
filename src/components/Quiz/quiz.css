@@ -1,13 +1,21 @@
-.answers {
+.answers,
+.answer,
+.error--message {
   display: flex;
+}
+
+.answers {
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.answer {
-  display: flex;
+.answer,
+.error--message {
   gap: 1rem;
+}
+
+.answer {
   align-items: center;
   padding: 0.75rem;
   border-radius: 0.75rem;
@@ -15,13 +23,14 @@
   background-color: var(--white);
 }
 
-.answer__text {
+.answer__text,
+.question {
   color: var(--navy-blue);
 }
 
-.question {
+.question,
+.progress-bar-background {
   margin-bottom: 2.5rem;
-  color: var(--navy-blue);
 }
 
 .answer__order {
@@ -31,14 +40,37 @@
   background-color: var(--light-grey);
 }
 
-.question--position {
-  margin-bottom: 0.75rem;
+.question--position,
+.error--message {
   color: var(--grey);
 }
 
-.range {
+.question--position {
+  margin-bottom: 0.75rem;
+}
+
+.progress-bar-background,
+.progress-bar {
+  height: 8px;
+}
+
+.progress-bar-background {
   width: 100%;
-  margin-bottom: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.progress-bar,
+.answer--selected > .answer__order,
+.answer--selected:hover > .answer__order {
+  background-color: var(--purple);
+}
+
+.progress-bar {
+  border-radius: 4px;
+  transition: width 0.3s ease;
 }
 
 .answer__correct-img,
@@ -46,7 +78,9 @@
   display: none;
 }
 
-.answer--correct > .answer__correct-img {
+.answer--correct > .answer__correct-img,
+.answer--picked--correct > .answer__correct-img,
+.answer--incorrect > .answer__incorrect-img {
   display: block;
   margin-left: auto;
 }
@@ -59,13 +93,10 @@
   border: 4px solid var(--purple);
 }
 
-.answer--selected > .answer__order {
-  background-color: var(--purple);
+.answer--selected > .answer__order,
+.answer--picked--correct > .answer__order,
+.answer--incorrect > .answer__order {
   color: #ffffff;
-}
-
-.answer--selected:hover > .answer__order {
-  background-color: var(--purple);
 }
 
 .answer--picked--correct {
@@ -74,35 +105,17 @@
 
 .answer--picked--correct > .answer__order {
   background-color: var(--green);
-  color: #ffffff;
-}
-
-.answer--picked--correct > .answer__correct-img {
-  display: block;
-  margin-left: auto;
 }
 
 .answer--incorrect {
   border: 4px solid var(--red);
 }
 
-.answer--incorrect > .answer__order {
-  background-color: var(--red);
-  color: #ffffff;
-}
-
+.answer--incorrect > .answer__order,
 .answer--incorrect:hover > .answer__order {
   background-color: var(--red);
 }
 
-.answer--incorrect > .answer__incorrect-img {
-  display: block;
-  margin-left: auto;
-}
-
 .error--message {
-  color: var(--grey);
-  display: flex;
-  gap: 1rem;
   justify-content: center;
 }

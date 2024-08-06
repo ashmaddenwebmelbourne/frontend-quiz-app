@@ -22,6 +22,9 @@ const QuizResults = ({
   totalQuestions,
 }: QuizResultsProps) => {
   {
+    const handleReload = () => {
+      window.location.reload();
+    };
     return isGameEnded ? (
       <section>
         <h1 className="heading--lg results__title">
@@ -42,9 +45,9 @@ const QuizResults = ({
           <strong className="display score">{`${score}`}</strong>
           <p className="score__total body--m">{`out of ${totalQuestions}`}</p>
         </div>
-        <div className="btn--end heading--s">
-          <a href="/">Restart quiz</a>
-        </div>
+        <button onClick={handleReload} id="btn-end" className="btn heading--s">
+          Restart quiz
+        </button>
       </section>
     ) : null;
   }

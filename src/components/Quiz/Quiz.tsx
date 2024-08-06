@@ -81,6 +81,9 @@ const Quiz = ({
     );
   });
 
+  // Calculate the width percentage for the progress bar
+  const widthPercentage = (questionPosition / totalQuestions) * 100 + 10;
+
   // Only begin quiz if topic is selected
   {
     return quizTopicSelected === null || isGameEnded ? null : (
@@ -90,12 +93,12 @@ const Quiz = ({
             questionPosition + 1
           } of ${totalQuestions}`}</em>
           <h1 className="question heading--m">{currentQuestion}</h1>
-          <input
-            className="range"
-            type="range"
-            value={questionPosition}
-            max={totalQuestions}
-          />
+          <div className="progress-bar-background">
+            <div
+              className="progress-bar"
+              style={{ width: `${widthPercentage}%` }}
+            ></div>
+          </div>
         </div>
         <div className="quiz__answers">
           <div className="answers">{answerOptions}</div>
