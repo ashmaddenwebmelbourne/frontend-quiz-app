@@ -62,12 +62,6 @@
   padding: 4px;
 }
 
-.progress-bar,
-.answer--selected > .answer__order,
-.answer--selected:hover > .answer__order {
-  background-color: var(--purple);
-}
-
 .progress-bar {
   border-radius: 4px;
   transition: width 0.3s ease;
@@ -87,6 +81,12 @@
 
 .answer-hover:hover > .answer__order {
   background-color: var(--accessibility);
+}
+
+.progress-bar,
+.answer--selected > .answer__order,
+.answer--selected:hover > .answer__order {
+  background-color: var(--purple);
 }
 
 .answer--selected {
