@@ -13,7 +13,7 @@ type QuizProps = {
       answer: string;
     }[];
   } | null;
-  totalQuestions: number;
+  totalQuestions: number | undefined;
   questionPosition: number;
   currentQuestion: string | undefined;
   chosenAnswer: string | null;
@@ -82,7 +82,7 @@ const Quiz = ({
   });
 
   // Calculate the width percentage for the progress bar
-  const widthPercentage = (questionPosition / totalQuestions) * 100 + 10;
+  const widthPercentage = (questionPosition / (totalQuestions ?? 1)) * 100 + 10;
 
   // Only begin quiz if topic is selected
   {
