@@ -13,7 +13,7 @@ type QuizProps = {
       answer: string;
     }[];
   } | null;
-  totalQuestions: number | undefined;
+  totalQuestions: number;
   questionPosition: number;
   currentQuestion: string | undefined;
   chosenAnswer: string | null;
